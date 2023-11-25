@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import "./globals.css"
+import { cn } from "@/lib/utils"
+import Navbar from "@/components/Navbar"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +16,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={GeistSans.className}>{children}</body>
+      <body
+        className={cn(
+          "relative h-full font-sans antialiased",
+          GeistSans.className
+        )}
+      >
+        <main className="relative flex flex-col min-h-screen">
+          <Navbar />
+          <div className="flex-grow flex-1">{children}</div>
+        </main>
+      </body>
     </html>
   )
 }
